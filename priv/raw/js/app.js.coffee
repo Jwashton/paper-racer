@@ -1,13 +1,17 @@
-socket = new Phoenix.Socket("ws://" + location.host + "/ws")
+$ ->
+  socket = new Phoenix.Socket("ws://" + location.host + "/ws")
 
-window.connect = (race_id) ->
-  topic = "race:" + race_id
+  window.connect = (race_id) ->
+    topic = "race:" + race_id
+    
+    socket.join topic, {}, (chan) ->
+      console.log("Joining...")
+      
+      chan.on "join", (message) ->
+        console.log(message.status)
+      
+      chan.on "user:entered", (message) ->
+        console.log("New user: " + message.user)
   
-  socket.join topic, {}, (chan) ->
-    console.log("Joining...")
-    
-    chan.on "join", (message) ->
-      console.log(message)
-    
-    chan.on "user:entered", (message) ->
-      console.log("New user: " + message.user)
+  $(window).on 'beforeunload', ->
+    socket.close()

@@ -8,6 +8,8 @@ defmodule PaperRacer.RoomController do
   end
   
   def show(conn, %{"id" => room_id}) do
-    render conn, "show.html", id: room_id
+    conn
+    |> put_layout(false)
+    |> render "show.html", id: room_id
   end
 end
