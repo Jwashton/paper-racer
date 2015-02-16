@@ -11,11 +11,16 @@ defmodule PaperRacer.Router do
   pipeline :api do
     plug :accepts, ~w(json)
   end
+  
+  socket "/ws", PaperRacer do
+    channel "race:*", RaceChannel
+  end
 
   scope "/", PaperRacer do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", RoomController, :index
+    get "/:id", RoomController, :show
   end
 
   # Other scopes may use custom stacks.

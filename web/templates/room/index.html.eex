@@ -1,0 +1,10 @@
+<h2>Open Races</h2>
+
+<ol id="room_list">
+  <%= for room <- room_list do %>
+    <li class="clearfix">
+      <span class="room_description"><%= room %></span>
+      <a class="join_link" href="<%= room_path @conn, :show, room %>">Join Race!</a>
+    </li>
+  <% end %>
+</ol>
