@@ -1,0 +1,8 @@
+run_erl [27950] Mon Feb 16 16:58:06 2015
+Args before exec of shell:
+run_erl [27950] Mon Feb 16 16:58:06 2015
+argv[0] = sh
+run_erl [27950] Mon Feb 16 16:58:06 2015
+argv[1] = -c
+run_erl [27950] Mon Feb 16 16:58:06 2015
+argv[2] = exec "/home/jwashton/Projects/paper_racer/rel/paper_racer/bin/paper_racer" "console"

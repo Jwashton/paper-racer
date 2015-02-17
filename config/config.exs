@@ -9,7 +9,8 @@ use Mix.Config
 config :paper_racer, PaperRacer.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "nWRdgQs6UfjKzDcGAYZdpTrTlGxsQEe+f4pH8WGH8RLQeNKLVow/A+R6FCq2Wx5k",
-  debug_errors: false
+  debug_errors: false,
+  server: true
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -1,0 +1,29 @@
+
+=====
+===== LOGGING STARTED Mon Feb 16 16:58:06 EST 2015
+=====
+Exec: /home/jwashton/Projects/paper_racer/rel/paper_racer/erts-6.3/bin/erlexec -boot /home/jwashton/Projects/paper_racer/rel/paper_racer/releases/0.0.1/paper_racer -boot_var ERTS_LIB_DIR /home/jwashton/Projects/paper_racer/rel/paper_racer/erts-6.3/../lib -env ERL_LIBS /home/jwashton/Projects/paper_racer/rel/paper_racer/lib -config /home/jwashton/Projects/paper_racer/rel/paper_racer/releases/0.0.1/sys.config -pa /home/jwashton/Projects/paper_racer/rel/paper_racer/lib/consolidated -args_file /home/jwashton/Projects/paper_racer/rel/paper_racer/releases/0.0.1/vm.args -user Elixir.IEx.CLI -extra --no-halt +iex -- console
+Root: /home/jwashton/Projects/paper_racer/rel/paper_racer
+/home/jwashton/Projects/paper_racer/rel/paper_racer
+Erlang/OTP 17 [erts-6.3] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false]
+
+[debug] Running PaperRacer.Endpoint with Cowboy on port 4000 (http)
+Interactive Elixir (1.0.2) - press Ctrl+C to exit (type h() ENTER for help)
+iex(paper_racer@127.0.0.1)1> [info] GET /ws
+[error] If you want to use the code reload plug in production or inside an escript, add :mix to your list of dependencies or disable code reloading
+[debug] Processing by Phoenix.Transports.WebSocket.upgrade/2
+  Parameters: %{}
+  Pipelines: []
+[debug] JOIN race:6
+[info] GET /
+[error] If you want to use the code reload plug in production or inside an escript, add :mix to your list of dependencies or disable code reloading
+[debug] Processing by PaperRacer.RoomController.index/2
+  Parameters: %{"format" => "html"}
+  Pipelines: [:browser]
+[info] Sent 200 in 30ms
+[info] GET /favicon.ico
+[error] If you want to use the code reload plug in production or inside an escript, add :mix to your list of dependencies or disable code reloading
+[debug] Processing by PaperRacer.RoomController.show/2
+  Parameters: %{"format" => "html", "id" => "favicon.ico"}
+  Pipelines: [:browser]
+[info] Sent 200 in 2ms
