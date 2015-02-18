@@ -6,6 +6,7 @@ minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="/js/jquery-min.js" type="text/javascript"></script>
     <script src="/js/phoenix.js" type="text/javascript"></script>
     <script src="/js/app.js" type="text/javascript"></script>
+    <meta name="mobile-web-app-capable" content="yes">
     <script type="text/javascript">
       $(function() {
         window.connect(<%= @id %>);

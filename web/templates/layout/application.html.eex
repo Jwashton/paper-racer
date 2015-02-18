@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="mobile-web-app-capable" content="yes">
 
     <title>Paper Racer</title>
     <link rel="stylesheet" href="/css/phoenix.css">
