@@ -1,0 +1,12 @@
+<form method="post" action="/login">
+  <input type="hidden" name="csrf_token" value="<%= csrf_token(@conn) %>">
+  <ul>
+    <li>
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username">
+    </li>
+    <li>
+      <input type="submit">
+    </li>
+  </ul>
+</form>

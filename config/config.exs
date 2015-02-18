@@ -12,6 +12,11 @@ config :paper_racer, PaperRacer.Endpoint,
   debug_errors: false,
   server: true
 
+# Add Session Information
+config :paper_racer, PaperRacer.Router,
+  session: [store: :cookie,
+            key: "nWRdgQs6UfjKzDcGAYZdpTrTlGxsQEe+f4pH8WGH8RLQeNKLVow/A+R6FCq2Wx5k"]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

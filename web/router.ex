@@ -19,6 +19,8 @@ defmodule PaperRacer.Router do
   scope "/", PaperRacer do
     pipe_through :browser # Use the default browser stack
 
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
     get "/", RoomController, :index
     get "/:id", RoomController, :show
   end
