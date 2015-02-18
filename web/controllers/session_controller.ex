@@ -8,6 +8,8 @@ defmodule PaperRacer.SessionController do
   end
   
   def create(conn, params) do
-    text conn, params["username"]
+    conn
+    |> put_session(:username, params["username"])
+    |> redirect to: "/"
   end
 end

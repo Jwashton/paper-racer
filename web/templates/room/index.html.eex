@@ -1,3 +1,9 @@
+<h2>Welcome <%= @current_user %></h2>
+
+<%= unless @logged_in do %>
+  <a href="<%= session_path @conn, :new %>">Login</a>
+<% end %>
+
 <h2>Open Races</h2>
 
 <ol id="room_list">

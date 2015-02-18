@@ -9,7 +9,7 @@ minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <script type="text/javascript">
       $(function() {
-        window.connect(<%= @id %>);
+        window.connect("<%= @id %>", "<%= @current_user %>");
       });
     </script>
     

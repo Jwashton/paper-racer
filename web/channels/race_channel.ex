@@ -2,10 +2,10 @@ defmodule PaperRacer.RaceChannel do
   use Phoenix.Channel
   require Logger
   
-  def join("race:" <> _race_id, _message, socket) do
+  def join("race:" <> _race_id, message, socket) do
     Logger.debug "JOIN #{socket.topic}"
     reply socket, "join", %{status: "connected"}
-    broadcast socket, "user:entered", %{user: "Fred"}
+    broadcast socket, "user:entered", %{user: message}
     {:ok, socket}
   end
   

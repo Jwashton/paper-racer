@@ -9,18 +9,18 @@
       context = $('#race_view')[0].getContext('2d');
       return window.drawStuff(context);
     };
-    window.connect = function(race_id) {
+    window.connect = function(race_id, username) {
       var topic;
       topic = "race:" + race_id;
-      return socket.join(topic, {}, function(chan) {
+      return socket.join(topic, username, function(chan) {
         console.log("Joining...");
         chan.on("join", function(message) {
           recordMessage(message.status);
           return console.log(message.status);
         });
         return chan.on("user:entered", function(message) {
-          recordMessage(message.user + " joined the race");
-          return console.log("New user: " + message.user);
+          recordMessage(JSON.stringify(message.user) + " joined the race");
+          return console.log(message.user);
         });
       });
     };
