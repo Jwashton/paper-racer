@@ -24,4 +24,8 @@ defmodule PaperRacer.View do
   def link_to(dest, message) do
     safe "<a href=\"#{dest}\">#{message}</a>"
   end
+  
+  def javascript_tag(file) do
+    safe "<script src=\"#{file}\" type=\"text/javascript\"></script>"
+  end
 end

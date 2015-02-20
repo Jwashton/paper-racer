@@ -5,7 +5,7 @@ defmodule PaperRacer.RaceChannel do
   def join("race:" <> _race_id, message, socket) do
     Logger.debug "JOIN #{socket.topic}"
     reply socket, "join", %{status: "connected"}
-    broadcast socket, "user:entered", %{user: message}
+    broadcast socket, "user:entered", %{user: message, id: 7}
     {:ok, socket}
   end
   
