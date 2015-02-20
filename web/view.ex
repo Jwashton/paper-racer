@@ -17,4 +17,11 @@ defmodule PaperRacer.View do
   def csrf_token(conn) do
     Plug.Conn.get_session(conn, :csrf_token)
   end
+  
+  def link_to(dest, message, %{class: class}) do
+    safe "<a class=\"#{class}\" href=\"#{dest}\">#{message}</a>"
+  end
+  def link_to(dest, message) do
+    safe "<a href=\"#{dest}\">#{message}</a>"
+  end
 end

@@ -1,7 +1,7 @@
 <h2>Welcome <%= @current_user %></h2>
 
 <%= unless @logged_in do %>
-  <a href="<%= session_path @conn, :new %>">Login</a>
+  <%= link_to(session_path(@conn, :new), "Login") %>
 <% end %>
 
 <h2>Open Races</h2>
@@ -10,7 +10,7 @@
   <%= for room <- room_list do %>
     <li class="clearfix">
       <span class="room_description"><%= room %></span>
-      <a class="join_link" href="<%= room_path @conn, :show, room %>">Join Race!</a>
+      <%= link_to(room_path(@conn, :show, room), "Join Race!", %{class: "join_link"}) %>
     </li>
   <% end %>
 </ol>
