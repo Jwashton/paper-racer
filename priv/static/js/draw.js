@@ -30,7 +30,7 @@
   };
 
   window.drawStuff = function(context) {
-    var centerX, centerY, x, y, _i, _j;
+    var centerX, centerY, racer, x, y, _i, _j, _k, _len;
     centerX = window.innerWidth / 2;
     centerY = window.innerHeight / 2;
     context.fillStyle = "#505050";
@@ -39,6 +39,10 @@
       for (y = _j = -150; _j <= 151; y = _j += 30) {
         drawCircle(context, x + centerX, y + centerY, 3, "#FFFFFF");
       }
+    }
+    for (_k = 0, _len = racers.length; _k < _len; _k++) {
+      racer = racers[_k];
+      drawCircle(context, racer.x * 30 + centerX, racer.y * 30 + centerY, 5, racer.color);
     }
     return drawChat(context, window.messages);
   };

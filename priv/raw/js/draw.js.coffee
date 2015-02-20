@@ -29,5 +29,8 @@ window.drawStuff = (context) ->
     for y in [-150..151] by 30
       drawCircle(context, x + centerX, y + centerY, 3, "#FFFFFF")
   
+  for racer in racers
+    drawCircle(context, racer.x * 30 + centerX, racer.y * 30 + centerY, 5, racer.color)
+  
   drawChat(context, window.messages)
   

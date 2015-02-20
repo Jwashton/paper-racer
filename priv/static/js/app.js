@@ -1,17 +1,22 @@
 (function() {
   $(function() {
-    var addRacer, recordMessage, socket;
+    var addRacer, recordMessage, redraw, socket;
     socket = new Phoenix.Socket("ws://" + location.host + "/ws");
     window.messages = [];
     window.racers = [];
-    recordMessage = function(message) {
+    window.starting_locations = [[0, 0], [0, 1], [0, 2]];
+    redraw = function() {
       var context;
-      window.messages.push(message);
       context = $('#race_view')[0].getContext('2d');
       return window.drawStuff(context);
     };
+    recordMessage = function(message) {
+      window.messages.push(message);
+      return redraw();
+    };
     addRacer = function(racer) {
-      return window.racers.push(racer);
+      window.racers.push(racer);
+      return redraw();
     };
     window.connect = function(race_id, username) {
       var topic;
@@ -19,13 +24,17 @@
       return socket.join(topic, username, function(chan) {
         console.log("Joining...");
         chan.on("join", function(message) {
+          var startSpot;
           recordMessage(message.status);
-          return console.log(message.status);
+          console.log(message.status);
+          startSpot = starting_locations.pop();
+          return addRacer(new Racer(message.user, message.id, startSpot[0], startSpot[1]));
         });
         return chan.on("user:entered", function(message) {
+          var startSpot;
           recordMessage(JSON.stringify(message.user) + " joined the race");
-          addRacer(new Racer(message.user, message.id));
-          return console.log(message.user);
+          startSpot = starting_locations.pop();
+          return addRacer(new Racer(message.user, message.id, startSpot[0], startSpot[1]));
         });
       });
     };
