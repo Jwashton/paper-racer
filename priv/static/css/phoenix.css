@@ -52,3 +52,7 @@ body {
   height: 0;
   clear: both;
 }
+
+#about {
+  text-align: center;
+}

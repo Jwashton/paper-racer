@@ -30,11 +30,15 @@
           startSpot = starting_locations.pop();
           return addRacer(new Racer(message.user, message.id, startSpot[0], startSpot[1]));
         });
-        return chan.on("user:entered", function(message) {
+        chan.on("user:entered", function(message) {
           var startSpot;
           recordMessage(JSON.stringify(message.user) + " joined the race");
           startSpot = starting_locations.pop();
           return addRacer(new Racer(message.user, message.id, startSpot[0], startSpot[1]));
+        });
+        return chan.on("event:begin", function(message) {
+          recordMessage("Beginning Race!");
+          return recordMessage(JSON.stringify(message.user) + "'s turn");
         });
       });
     };

@@ -14,3 +14,7 @@
     </li>
   <% end %>
 </ol>
+
+<div id="about">
+  <%= link_to("https://github.com/Jwashton/paper-racer", "Fork me on GitHub!") %>
+</div>

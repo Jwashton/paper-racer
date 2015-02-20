@@ -32,6 +32,10 @@ $ ->
         recordMessage(JSON.stringify(message.user) + " joined the race")
         startSpot = starting_locations.pop()
         addRacer(new Racer(message.user, message.id, startSpot[0], startSpot[1]))
+      
+      chan.on "event:begin", (message) ->
+        recordMessage("Beginning Race!")
+        recordMessage(JSON.stringify(message.user) + "'s turn")
   
   $(window).on 'beforeunload', ->
     socket.close()
