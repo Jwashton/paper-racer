@@ -1,5 +1,5 @@
 (function() {
-  var drawChat, drawCircle;
+  var drawChat, drawCircle, within;
 
   drawCircle = function(context, x, y, radius, color) {
     context.fillStyle = color;
@@ -29,15 +29,25 @@
     return _results;
   };
 
+  within = function(x, goal, leeway) {
+    return x < goal + leeway && x > goal - leeway;
+  };
+
   window.drawStuff = function(context) {
-    var centerX, centerY, racer, x, y, _i, _j, _k, _len;
+    var centerX, centerY, racer, x, x2, y, y2, _i, _j, _k, _len;
     centerX = window.innerWidth / 2;
     centerY = window.innerHeight / 2;
     context.fillStyle = "#505050";
     context.fillRect(0, 0, window.innerWidth, window.innerHeight);
     for (x = _i = -150; _i < 151; x = _i += 30) {
       for (y = _j = -150; _j <= 151; y = _j += 30) {
-        drawCircle(context, x + centerX, y + centerY, 3, "#FFFFFF");
+        x2 = x + centerX;
+        y2 = y + centerY;
+        if (within(mouse[0], x2, 10) && within(mouse[1], y2, 10)) {
+          drawCircle(context, x + centerX, y + centerY, 8, "#DDDDDD");
+        } else {
+          drawCircle(context, x + centerX, y + centerY, 3, "#FFFFFF");
+        }
       }
     }
     for (_k = 0, _len = racers.length; _k < _len; _k++) {

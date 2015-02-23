@@ -17,6 +17,7 @@
     
     <%= javascript_tag "/js/draw.js" %>
     <%= javascript_tag "/js/canvas.js" %>
+    <%= javascript_tag "/js/input.js" %>
     
     <title>Paper Racer</title>
     <link rel="stylesheet" href="/css/canvas.css">

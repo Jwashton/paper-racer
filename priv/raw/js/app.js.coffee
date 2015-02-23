@@ -3,8 +3,9 @@ $ ->
   window.messages = []
   window.racers = []
   window.starting_locations = [[0, 0], [0, 1], [0, 2]]
+  window.mouse = [0, 0]
 
-  redraw = ->
+  window.redraw = ->
     context = $('#race_view')[0].getContext('2d')
     window.drawStuff(context)
   

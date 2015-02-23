@@ -1,11 +1,12 @@
 (function() {
   $(function() {
-    var addRacer, recordMessage, redraw, socket;
+    var addRacer, recordMessage, socket;
     socket = new Phoenix.Socket("ws://" + location.host + "/ws");
     window.messages = [];
     window.racers = [];
     window.starting_locations = [[0, 0], [0, 1], [0, 2]];
-    redraw = function() {
+    window.mouse = [0, 0];
+    window.redraw = function() {
       var context;
       context = $('#race_view')[0].getContext('2d');
       return window.drawStuff(context);

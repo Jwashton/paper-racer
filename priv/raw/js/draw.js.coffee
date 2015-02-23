@@ -18,6 +18,9 @@ drawChat = (context, messages) ->
     context.fillText(message, 30, window.innerHeight - 30 - (i * 20))
     i++
 
+within = (x, goal, leeway) ->
+  x < goal + leeway and x > goal - leeway
+
 window.drawStuff = (context) ->
   centerX = window.innerWidth / 2
   centerY = window.innerHeight / 2
@@ -27,7 +30,13 @@ window.drawStuff = (context) ->
   
   for x in [-150...151] by 30
     for y in [-150..151] by 30
-      drawCircle(context, x + centerX, y + centerY, 3, "#FFFFFF")
+      x2 = x + centerX
+      y2 = y + centerY
+      
+      if within(mouse[0], x2, 10) and within(mouse[1], y2, 10)
+        drawCircle(context, x + centerX, y + centerY, 8, "#DDDDDD")
+      else
+        drawCircle(context, x + centerX, y + centerY, 3, "#FFFFFF")
   
   for racer in racers
     drawCircle(context, racer.x * 30 + centerX, racer.y * 30 + centerY, 5, racer.color)
