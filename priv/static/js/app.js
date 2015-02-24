@@ -6,10 +6,16 @@
     window.racers = [];
     window.starting_locations = [[0, 0], [0, 1], [0, 2]];
     window.mouse = [0, 0];
+    window.selected = [false, 0, 0];
     window.redraw = function() {
       var context;
       context = $('#race_view')[0].getContext('2d');
       return window.drawStuff(context);
+    };
+    window.click = function() {
+      var _ref;
+      window.selected = (_ref = []).concat.apply(_ref, [true, mouseAt()]);
+      return recordMessage(mouseAt());
     };
     recordMessage = function(message) {
       window.messages.push(message);

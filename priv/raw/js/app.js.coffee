@@ -4,10 +4,15 @@ $ ->
   window.racers = []
   window.starting_locations = [[0, 0], [0, 1], [0, 2]]
   window.mouse = [0, 0]
+  window.selected = [false, 0, 0]
 
   window.redraw = ->
     context = $('#race_view')[0].getContext('2d')
     window.drawStuff(context)
+  
+  window.click = ->
+    window.selected = [].concat([true, mouseAt()]...)
+    recordMessage(mouseAt())
   
   recordMessage = (message) ->
     window.messages.push message

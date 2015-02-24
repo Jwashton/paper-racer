@@ -18,8 +18,21 @@ drawChat = (context, messages) ->
     context.fillText(message, 30, window.innerHeight - 30 - (i * 20))
     i++
 
-within = (x, goal, leeway) ->
-  x < goal + leeway and x > goal - leeway
+window.mouseAt = () ->
+  [Math.round((mouse[0] - window.innerWidth / 2) / 30),
+   Math.round((mouse[1] - window.innerHeight / 2) / 30)]
+
+within = (coord, goal, leeway) ->
+  coord < goal + leeway and coord > goal - leeway
+
+arrayEq = (left, right) ->
+  unless left? and right? and left.length == right.length
+    return false
+  else
+    for i in [0..(left.length)]
+      return false if left[i] != right[i]
+  true
+    
 
 window.drawStuff = (context) ->
   centerX = window.innerWidth / 2
@@ -33,10 +46,20 @@ window.drawStuff = (context) ->
       x2 = x + centerX
       y2 = y + centerY
       
-      if within(mouse[0], x2, 10) and within(mouse[1], y2, 10)
-        drawCircle(context, x + centerX, y + centerY, 8, "#DDDDDD")
+      simX = Math.round(x / 30)
+      simY = Math.round(y / 30)
+      
+      if arrayEq(selected, [true, simX, simY])
+        color = "#40A040"
       else
-        drawCircle(context, x + centerX, y + centerY, 3, "#FFFFFF")
+        color = "#DDDDDD"
+      
+      if within(mouse[0], x2, 10) and within(mouse[1], y2, 10)
+        drawCircle(context, x2, y2, 8, color)
+      else if arrayEq(selected, [true, simX, simY])
+        drawCircle(context, x2, y2, 3, color)
+      else
+        drawCircle(context, x2, y2, 3, color)
   
   for racer in racers
     drawCircle(context, racer.x * 30 + centerX, racer.y * 30 + centerY, 5, racer.color)

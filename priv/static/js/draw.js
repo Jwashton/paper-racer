@@ -1,5 +1,5 @@
 (function() {
-  var drawChat, drawCircle, within;
+  var arrayEq, drawChat, drawCircle, within;
 
   drawCircle = function(context, x, y, radius, color) {
     context.fillStyle = color;
@@ -29,12 +29,30 @@
     return _results;
   };
 
-  within = function(x, goal, leeway) {
-    return x < goal + leeway && x > goal - leeway;
+  window.mouseAt = function() {
+    return [Math.round((mouse[0] - window.innerWidth / 2) / 30), Math.round((mouse[1] - window.innerHeight / 2) / 30)];
+  };
+
+  within = function(coord, goal, leeway) {
+    return coord < goal + leeway && coord > goal - leeway;
+  };
+
+  arrayEq = function(left, right) {
+    var i, _i, _ref;
+    if (!((left != null) && (right != null) && left.length === right.length)) {
+      return false;
+    } else {
+      for (i = _i = 0, _ref = left.length; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+        if (left[i] !== right[i]) {
+          return false;
+        }
+      }
+    }
+    return true;
   };
 
   window.drawStuff = function(context) {
-    var centerX, centerY, racer, x, x2, y, y2, _i, _j, _k, _len;
+    var centerX, centerY, color, racer, simX, simY, x, x2, y, y2, _i, _j, _k, _len;
     centerX = window.innerWidth / 2;
     centerY = window.innerHeight / 2;
     context.fillStyle = "#505050";
@@ -43,10 +61,19 @@
       for (y = _j = -150; _j <= 151; y = _j += 30) {
         x2 = x + centerX;
         y2 = y + centerY;
-        if (within(mouse[0], x2, 10) && within(mouse[1], y2, 10)) {
-          drawCircle(context, x + centerX, y + centerY, 8, "#DDDDDD");
+        simX = Math.round(x / 30);
+        simY = Math.round(y / 30);
+        if (arrayEq(selected, [true, simX, simY])) {
+          color = "#40A040";
         } else {
-          drawCircle(context, x + centerX, y + centerY, 3, "#FFFFFF");
+          color = "#DDDDDD";
+        }
+        if (within(mouse[0], x2, 10) && within(mouse[1], y2, 10)) {
+          drawCircle(context, x2, y2, 8, color);
+        } else if (arrayEq(selected, [true, simX, simY])) {
+          drawCircle(context, x2, y2, 3, color);
+        } else {
+          drawCircle(context, x2, y2, 3, color);
         }
       }
     }
