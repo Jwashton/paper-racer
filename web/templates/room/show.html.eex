@@ -15,6 +15,7 @@
       });
     </script>
     
+    <%= javascript_tag "/js/view.js" %>
     <%= javascript_tag "/js/draw.js" %>
     <%= javascript_tag "/js/canvas.js" %>
     <%= javascript_tag "/js/input.js" %>
